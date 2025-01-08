@@ -1,6 +1,7 @@
 # Banpay backend challenge
 
-_Enrique Velasco Jimenez: Banpay backend challenge using fastAPI + MongoDB + Docker_
+_Enrique Velasco Jimenez: Business Case: Implementación de un Sistema de Autenticación
+Multi-Factor (MFA) para Aplicaciones Fintech
 
 ## Comenzando 🚀
 
@@ -12,7 +13,8 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 _Que cosas necesitas para instalar el software y como instalarlas_
 
 ```
-Docker instalado
+Pyhton (pip)
+NodeJs
 ```
 
 ### Instalación 🔧
@@ -22,48 +24,51 @@ _Para ejectura el proyecto sigue los pasos que a continuación se te muestran_
 _Clona el proyecto de github_
 
 ```
-git clone https://github.com/EnriqueVelascoJi/banpay-users-api.git
+git clone https://github.com/EnriqueVelascoJi/creze-authentication.git
 ```
 
 _Accede a la cerptea_
 
 ```
-cd banpay-users-api
+cd creze-authentication
 ```
-
-_Crear un archivo .env derivado de una copia de .env.example en el directorio raíz_
-
-```
-copy .env.example .env
-```
-
-_Ejecuta los siguientes comandos de Docker_
+_Accede a la cerpeta frontend_
 
 ```
-docker-compose build
-docker-compose up -d
+cd frontend/frontend
 ```
-
-
-_Ahora puedes ver el proyecto desplegado en la sigueinte liga_
+_Instalar dependencias del frontend_
 
 ```
-http://localhost:8000/
+npm instll
+```
+_Levantar el proyecto frontend_
+
+```
+npm run dev
 ```
 
-_Para ver la documentación de la API_
+_Regresa al directorio principal_
 
 ```
-http://localhost:8000/docs
+cd ../..
 ```
 
-## Ver video DEMO 
+_Accede a la cerpetabackend_
 
-_Te adjunto una liga para que veas su funcionamiento_
+```
+cd backend
+```
+_Instalar dependencias del backend_
 
-* [DEMO](https://drive.google.com/file/d/1HKagMB-g7gmxL65fwcTSr4xOtH04OLup/view?usp=drive_link)
+```
+pip install -r requirements.txt
+```
+_Levantar el proyecto frontend_
 
-
+```
+python manage.py runserver
+```
 
 ## Autores ✒️
 
