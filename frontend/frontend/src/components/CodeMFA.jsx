@@ -50,7 +50,7 @@ const CodeMFA = ({userId}) => {
 
     } else toast.error(data.message);
     } catch (error) {
-      toast.error("¡Credenciales inválidas!");
+      toast.error("¡Código incorrecto!");
     }
   };
 

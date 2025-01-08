@@ -14,7 +14,7 @@ import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
-//ENV
+
 const URL = "http://localhost:8000" + "/api/login/";
 
 const Login = () => {
@@ -54,7 +54,6 @@ const Login = () => {
 
     } else toast.error(data.message);
     } catch (error) {
-      console.log(error)
       toast.error("¡Credenciales inválidas!");
     }
   };
@@ -64,11 +63,17 @@ const Login = () => {
   return (
     <>
 
+    {/* Alert message */}
+    <ToastContainer />
+
     {
       loginMFA ? (
-        <CodeMFA 
-          userId={userId}
-        />
+        <>
+        {/* Insert the MFA Code */}
+          <CodeMFA 
+            userId={userId}
+          />
+        </>
       ) : (
         <>
         {/* Login Form */}

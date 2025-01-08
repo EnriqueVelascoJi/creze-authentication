@@ -10,7 +10,6 @@ import MFA from "../../components/MFA";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
-//ENV
 const URL = "http://localhost:8000" + "/api/signup/";
 
 const SignUp = () => {
@@ -25,6 +24,8 @@ const SignUp = () => {
   })
   const [requireMFA, setRequireMFA] = useState(false)
   const [qr, setQR] = useState('')
+  const [userId, setUserId] = useState(-1)
+
 
   //Local variables
   let navigate = useNavigate();
@@ -41,8 +42,14 @@ const SignUp = () => {
     e.preventDefault();
     const { name, lastName, email, password, confirmPassword } = user;
     
-    if (password !== confirmPassword) toast.error("¡Las contraseñas no coinciden!");
-    if (password.length < 8) toast.error("¡La conttraseña es muy corta!")
+    if (password !== confirmPassword) {
+      toast.error("¡Las contraseñas no coinciden!")
+      return
+    };
+    if (password.length < 8) {
+      toast.error("¡La conttraseña es muy corta!")
+      return
+    }
     else{
       const formData = {
         email,
@@ -54,13 +61,16 @@ const SignUp = () => {
         const res = await axios.post(URL, formData);
         const data = res.data;
         if (res.status === 201) {
+          console.log(data)
           toast.success("¡Usuario registrado correctamente!");
           setQR(data.qr_code)
           setRequireMFA(true)
+          setUserId(data.id)
         } else {
           toast.error(data.message);
         }
       } catch (error) {
+        console.log(error)
         toast.error(error.message);
         throw error
       }
@@ -81,6 +91,7 @@ const SignUp = () => {
             {/* SignUp Form */}
             <MFA 
               qr={qr}
+              userId={userId}
             /> 
 
         </>

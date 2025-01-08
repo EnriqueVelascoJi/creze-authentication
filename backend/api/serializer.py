@@ -24,16 +24,6 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'email', 'qr_code']
 
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        
-        # These are claims, you can add custom claims
-        token['username'] = user.username
-        token['email'] = user.email
-        # ...
-        return token
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
@@ -41,7 +31,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'password', 'password2', 'qr_code']
+        fields = ['email', 'username', 'password', 'password2', 'qr_code', 'id']
 
     def validate(self, attrs: dict):
         if attrs['password'] != attrs['password2']:
@@ -119,9 +109,9 @@ class VerifyOTPSerializer(serializers.Serializer):
         
         if not user:
             raise exceptions.AuthenticationFailed("Authentication Failed.")
+        
         if (
-            not check_password(attrs["otp"], user.login_otp)
-            or not user.is_valid_otp()
+            not user.is_valid_otp()
         ):
             raise exceptions.AuthenticationFailed("Authentication Failed.")
         return attrs

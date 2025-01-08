@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from api.models import User
 
-from api.serializer import MyTokenObtainPairSerializer, RegisterSerializer, LoginSerialiazer, VerifyOTPSerializer
+from api.serializer import RegisterSerializer, LoginSerialiazer, VerifyOTPSerializer
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response

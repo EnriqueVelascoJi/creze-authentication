@@ -7,18 +7,24 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 
-//ENV
-const URL = "http://localhost:8000" + "/api/signup/";
+const URL = "http://localhost:8000" + "/api/verify-otp/";
 
-const MFA = ({qr}) => {
+
+const MFA = ({qr, userId}) => {
 
   //Local state
   const [code, setCode] = useState('')
+
+  //Local Variables
+  const navigate = useNavigate()
  
   
   //Handles
   const handleChange = (e) => {
     setCode(e.target.value)
+  }
+  const handleVerifyMFA = async(e) => {
+    navigate('/login')
   }
   
 
@@ -44,18 +50,16 @@ const MFA = ({qr}) => {
           </figure>
 
           </li>
-          <li>Registra el código de 6 dígitos
-          <input
-              id="password"
-              type="text"
-              name="code"
-              placeholder="MFA code"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5  dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
-              required
-              onChange={handleChange}
-            />
-          </li>
+          
+
         </ol>
+        <button
+        onClick={handleVerifyMFA}
+                type="submit"
+                class="focus:outline-none text-white bg-purple-600 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-500 dark:hover:bg-purple-600 dark:focus:ring-purple-800"
+              >
+                Listo
+              </button>
         </div>
       </div>
     </div>
