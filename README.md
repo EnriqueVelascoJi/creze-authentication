@@ -1,7 +1,6 @@
-# Banpay backend challenge
+# Business Case: Implementación de un Sistema de AutenticaciónMulti-Factor (MFA) para Aplicaciones Fintech
 
-_Enrique Velasco Jimenez: Business Case: Implementación de un Sistema de Autenticación
-Multi-Factor (MFA) para Aplicaciones Fintech
+_Enrique Velasco Jimenez: Business Case: Implementación de un Sistema de Autenticación Multi-Factor (MFA) para Aplicaciones Fintech_
 
 ## Comenzando 🚀
 
